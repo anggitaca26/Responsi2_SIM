@@ -1,0 +1,168 @@
+:root{
+  --cream-bg: #FBF6EE;
+  --card-bg: #FFFFFF;
+  --accent: #B85B3A; /* warm accent replacing bootstrap red */
+  --muted: #5B4A42;
+  --soft: #FFF9F2;
+}
+
+/* Page background and base text color */
+body{
+  background-color: var(--cream-bg);
+  color: var(--muted);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Navbar: keep light but slightly warm */
+.navbar{
+  background-color: var(--card-bg) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Hero tweaks to match cream tone */
+.hero-section{ background-blend-mode: multiply; color: var(--muted); }
+.hero-section .btn-danger{ background-color: var(--accent); border-color: var(--accent); }
+
+/* Cards and feature blocks */
+.card, .feature-card, .why-card, .testimonial-card{
+  background: linear-gradient(180deg, var(--card-bg), var(--soft));
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Why / Testimonial styles refined */
+.why-card h5, .testimonial-card h5{ color: var(--muted); }
+.testimonial-img{ border-color: var(--accent) !important; }
+
+/* Footer: cream variant */
+footer.bg-dark{
+  background-color: #efe6d6 !important;
+  color: #3b2f28 !important;
+}
+footer .text-white{ color: inherit !important; }
+footer hr{ border-color: rgba(0,0,0,0.06); }
+
+/* Buttons: danger -> warm accent, success keep green but slightly muted */
+.btn-danger{
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.btn-danger:hover{ background-color: darken(var(--accent), 5%) !important; }
+.btn-success{ background-color: #8f8779 !important; border-color: #87816e !important; }
+
+/* Custom: change text color of the submit button on order page */
+#submitOrder {
+  color: var(--brand-dark) !important;
+}
+
+/* Text utilities */
+.text-danger{ color: var(--accent) !important; }
+
+/* Contact list (no bullets) */
+.contact-list{ list-style:none; padding-left:0; margin-left:0; }
+.contact-list li{ margin-bottom:0.6rem; }
+
+/* Small helpers */
+.order-summary, .order-details{ background: rgba(255,255,255,0.9); }
+
+/* Accessibility: focus outlines */
+a:focus, button:focus, input:focus{ outline: 3px solid rgba(184,91,58,0.12); outline-offset: 2px; }
+
+/* Fallback for CSS darken() use in older browsers: simple hover */
+.btn-danger:hover{ filter: brightness(0.95); }
+
+/* Responsive tweaks */
+@media (max-width: 767px){
+  .hero-section { padding: 40px 0; }
+}
+
+/* Harmonize Bootstrap 'danger' and related utilities to site's accent */
+.bg-danger, .icon-wrapper .bg-danger { background-color: var(--accent) !important; }
+.text-danger { color: var(--accent) !important; }
+.btn-danger { background-color: var(--accent) !important; border-color: var(--accent) !important; color: #fff !important; }
+.btn-danger:hover { filter: brightness(0.95); }
+.btn-outline-danger { color: var(--accent) !important; border-color: rgba(184,91,58,0.28) !important; }
+.btn-outline-danger:hover { background-color: rgba(184,91,58,0.06) !important; }
+.category-badge { background: var(--accent) !important; }
+.badge-danger { background: var(--accent) !important; color: #fff !important; }
+
+/* Navbar active link uses accent */
+.navbar .nav-link.active { color: var(--accent) !important; font-weight: 600; }
+
+/* Make warning (stars) warmer to match cream palette */
+.text-warning { color: #c89656 !important; }
+
+/* Alerts using danger to be subtle on cream background */
+.alert-danger { background-color: rgba(184,91,58,0.06); border-color: rgba(184,91,58,0.12); color: var(--muted); }
+
+/* Make alert/info blocks match cream theme (replace red accents) */
+.alert-light.border {
+  background-color: var(--card-bg) !important;
+  border: 1px solid rgba(184,91,58,0.12) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  color: var(--muted) !important;
+}
+.alert-light .fa-info-circle, .alert .fa-info-circle.text-danger { color: var(--accent) !important; }
+.alert-light .text-danger, .alert .text-danger { color: var(--accent) !important; }
+
+/* Subtle icon background for info circle */
+.alert .fa-info-circle { background: rgba(184,91,58,0.10); padding:8px; border-radius:50%; color:#fff; }
+
+/* Make the "Kembali" button neutral and prevent color collision */
+.prev-step {
+  background-color: transparent !important;
+  color: var(--accent) !important;
+  border-color: rgba(159, 78, 48, 0.505) !important;
+}
+.prev-step:hover {
+  background-color: rgba(159,78,48 ,0.505) !important;
+  color: var(--accent) !important;
+}
+
+/* Small adjustment for outline buttons inside cards to be subtle */
+.card .btn-outline-danger {
+  border-color: rgba(184,91,58,0.12) !important;
+  color: var(--accent) !important;
+}
+
+
+/* ======================================================
+   TAMBAHAN: FILTER HARGA (ACTIVE WARNA OREN / ACCENT)
+   ====================================================== */
+
+/* Base style tombol filter (biar konsisten & rapi) */
+.filter-btn{
+  border: 1px solid rgba(184,91,58,0.28) !important;
+  background: transparent !important;
+  color: var(--accent) !important;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+  text-decoration: none;     /* kalau pakai <a> */
+  display: inline-block;     /* kalau pakai <a> */
+}
+
+/* Hover (belum dipilih) */
+.filter-btn:hover{
+  background-color: rgba(184,91,58,0.08) !important;
+}
+
+/* Saat dipilih (ACTIVE) -> oren */
+.filter-btn.active{
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+/* Hover/Focus saat active tetap oren */
+.filter-btn.active:hover,
+.filter-btn.active:focus{
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+  filter: brightness(0.97);
+  box-shadow: none !important;
+  outline: none !important;
+}

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Kue - CakeHub</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* =========================
+   CARD KATALOG – FINAL RAPI
+   ========================= */
+
+.cake-card {
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: 100%;
+}
+
+.cake-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* gambar */
+.cake-card img {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    object-fit: cover;
+    height: 220px;
+}
+
+/* isi card */
+.cake-card .card-body {
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* judul */
+.cake-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+}
+
+/* deskripsi */
+.cake-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+
+    /* bikin tinggi rapi & sejajar */
+    min-height: 72px;
+
+    /* truncate 3 baris */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* harga */
+.price-tag {
+    background: #c05c3c;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+/* status + tombol */
+.cake-card .d-flex {
+    margin-top: auto;
+}
+
+/* tombol pesan */
+.cake-card .btn {
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+}
+
+/* =========================
+   JUDUL SECTION KATEGORI
+   ========================= */
+
+.section-title {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+/* =========================
+   FILTER SIDEBAR
+   ========================= */
+
+.filter-btn {
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.filter-btn.active {
+    background-color: #e05d2f;
+    color: #fff;
+    border-color: #e05d2f;
+}
+
+        /* CSS khusus untuk halaman Katalog */
+        .catalog-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1571115764595-644a1f56a55c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0 60px;
+            margin-top: 76px;
+            text-align: center;
+        }
+
+        .cake-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cake-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+
+        }
+
+        .cake-card .card-img-top {
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            object-fit: cover;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cake-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        .cake-card .card-body {
+            padding: 1.5rem 1.5rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+         .cake-card .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+            min-height: 48px;
+        }
+         .cake-card .card-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            flex: 1;
+            min-height: 72px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .price-tag {
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .category-nav {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 90px;
+            z-index: 100;
+        }
+
+        .category-link {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: all 0.3s;
+        }
+
+        .category-link:hover, .category-link.active {
+            background: var(--accent);
+            color: white;
+        }
+
+        .filter-btn {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .cake-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-danger" href="index.html">
+                <i class="fas fa-birthday-cake me-2"></i>CakeHub
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle me-1"></i>Tentang
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="catalog.html">
+                            <i class="fas fa-images me-1"></i>Katalog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="order.html">
+                            <i class="fas fa-shopping-cart me-1"></i>Pesan
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="catalog-hero">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Katalog Kue Kami</h1>
+            <p class="lead mb-0">Pilih dari berbagai jenis kue terbaik untuk setiap momen spesial Anda</p>
+        </div>
+    </section>
+
+    <!-- ===== KATEGORI DAN FILTER ===== -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="category-nav">
+                        <h5 class="fw-bold mb-4"><i class="fas fa-filter me-2"></i>Kategori</h5>
+
+                        <!-- DITAMBAHKAN: Semua Menu -->
+                        <a href="#all" class="category-link">
+                            <i class="fas fa-th-large me-2"></i>Semua Menu
+                        </a>
+
+                        <a href="#birthday" class="category-link active">
+                            <i class="fas fa-birthday-cake me-2"></i>Birthday Cake
+                        </a>
+                        <a href="#brownies" class="category-link">
+                            <i class="fas fa-cookie me-2"></i>Brownies & Cookies
+                        </a>
+                        <a href="#cheesecake" class="category-link">
+                            <i class="fas fa-cheese me-2"></i>Cheesecake
+                        </a>
+
+                        <hr class="my-4">
+
+                        <h6 class="fw-bold mb-3">Filter Harga</h6>
+                        <div class="btn-group-vertical w-100">
+                            <button class="btn btn-outline-danger text-start filter-btn" data-filter="all">Semua Harga</button>
+                            <button class="btn btn-outline-danger text-start filter-btn" data-filter="low">Dibawah Rp 300.000</button>
+                            <button class="btn btn-outline-danger text-start filter-btn" data-filter="medium">Rp 300.000 - 400.000</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div id="all" class="pt-4"></div>
+
+                    <!-- Birthday Cake Section -->
+                    <div id="birthday" class="mb-5 pt-4">
+                        <h2 class="fw-bold mb-4"><i class="fas fa-birthday-cake me-2 text-danger"></i>Birthday Cake</h2>
+                        <div class="row">
+                            <!-- Birthday Cake 1 -->
+                           <div class="col-md-4" data-category="birthday" data-price="medium">
+                                <div class="cake-card">
+                                    <div class="position-relative">
+                                        <img src="img/BiscoffDripCake.jpg"
+                                             class="card-img-top" alt="Birthday Cake Chocolate">
+                                        <span class="cake-badge">
+                                            <span class="badge bg-danger">Terlaris</span>
+                                        </span>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Birthday Cake Biscoff</h5>
+                                        <p class="card-text text-muted">Kue ulang tahun rasa biscoff dengan dekorasi custom sesuai permintaan.</p>
+                                        <div class="price-tag">Rp 350.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-success">
+                                                <i class="fas fa-check-circle"></i> Tersedia
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday1'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Birthday Cake 2 -->
+                            <div class="col-md-4" data-category="birthday" data-price="low">
+                                <div class="cake-card">
+                                    <img src="img/StrawberryCakes.jpg"
+                                         class="card-img-top" alt="Rainbow Birthday Cake">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Strawberry Birthday Cake</h5>
+                                        <p class="card-text text-muted">Kue lembut dengan buttercream creamy dan topping strawberry segar yang manis dan menyegarkan.</p>
+                                        <div class="price-tag">Rp 200.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-success">
+                                                <i class="fas fa-check-circle"></i> Tersedia
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday2'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Birthday Cake 3 -->
+                            <div class="col-md-4" data-category="birthday" data-price="low">
+                                <div class="cake-card">
+                                    <img src="img/BentoCakes.jpg"
+                                         class="card-img-top" alt="Number Cake">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Bento Cakes</h5>
+                                        <p class="card-text text-muted">Bento cake ukuran mini (±10 cm), cocok untuk surprise, sudah include lilin.</p>
+                                        <div class="price-tag">Rp 80.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-warning">
+                                                <i class="fas fa-clock"></i> Pre-order 3 hari
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday3'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brownies & Cookies Section -->
+                    <div id="brownies" class="mb-5 pt-4">
+                        <h2 class="fw-bold mb-4"><i class="fas fa-cookie me-2 text-danger"></i>Brownies & Cookies</h2>
+                        <div class="row">
+                            <!-- Cookies 1 -->
+                            <div class="col-md-4" data-category="brow" data-price="low">
+                                <div class="cake-card">
+                                    <div class="position-relative">
+                                        <img src="img/buttermatchacookies.jpg"
+                                             class="card-img-top" alt="Butter Matcha Cookies">
+                                        <span class="cake-badge">
+                                            <span class="badge bg-danger">Terlaris</span>
+                                        </span>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Butter Matcha Cookies</h5>
+                                        <p class="card-text text-muted">Cookies matcha lembut dengan rasa teh hijau khas dan topping white chocolate manis.</p>
+                                        <div class="price-tag">Rp 45.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-success">
+                                                <i class="fas fa-check-circle"></i> Tersedia
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday1'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <!-- Cookies 2-->
+                            <div class="col-md-4" data-category="brownies" data-price="low">
+                                <div class="cake-card">
+                                    <img src="img/RedVelvetCookies.jpg"
+                                         class="card-img-top" alt="Red Velvet Cookies">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Red Velvet Cookies</h5>
+                                        <p class="card-text text-muted">Cookies red velvet lembut dan chewy dengan potongan white chocolate creamy.</p>
+                                        <div class="price-tag">Rp 45.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-success">
+                                                <i class="fas fa-check-circle"></i> Tersedia
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday2'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cookies 3-->
+                            <div class="col-md-4" data-category="brownies" data-price="low">
+                                <div class="cake-card">
+                                    <img src="img/CookieMonsterCookies.jpg"
+                                         class="card-img-top" alt="Number Cake">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold"> Cookie Monster Cookies</h5>
+                                        <p class="card-text text-muted">Cookies biru lembut dengan topping cokelat, remahan cookies, dan hiasan edible eyes.</p>
+                                        <div class="price-tag">Rp 50.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-warning">
+                                                <i class="fas fa-clock"></i> Pre-order 3 hari
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday3'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div id="brownies" class="mb-5 pt-4">
+                        <h2 class="fw-bold mb-4"></h2>
+                        <div class="row">
+                            <!-- Brownies 1-->
+                            <div class="col-md-4" data-category="brow" data-price="low">
+                                <div class="cake-card">
+                                    <div class="position-relative">
+                                        <img src="img/ChunkyBrowniesBox.jpg"
+                                             class="card-img-top" alt="Chunky Brownies Box">
+                                        <span class="cake-badge">
+                                            <span class="badge bg-danger">Terlaris</span>
+                                        </span>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Chunky Brownies Box</h5>
+                                        <p class="card-text text-muted">Brownies cokelat fudgy dengan aneka topping seperti Oreo, Lotus, cokelat, dan kacang.</p>
+                                        <div class="price-tag">Rp 180.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-success">
+                                                <i class="fas fa-check-circle"></i> Tersedia
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday1'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Brownies 2-->
+                            <div class="col-md-4" data-category="birthday" data-price="low">
+                                <div class="cake-card">
+                                    <img src="img/AlmondFlourChocolateBrownies.jpg"
+                                         class="card-img-top" alt="Almond Flour Chocolate Brownies">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Almond Flour Chocolate Brownies</h5>
+                                        <p class="card-text text-muted">Brownies cokelat lembut dari tepung almond dengan krim dan buah segar.</p>
+                                        <div class="price-tag">Rp 145.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-success">
+                                                <i class="fas fa-check-circle"></i> Tersedia
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday2'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Brownies 3-->
+                            <div class="col-md-4" data-category="brownies" data-price="low">
+                                <div class="cake-card">
+                                    <img src="img/MatchaOreoBlondies.jpg"
+                                         class="card-img-top" alt="MatchaOreoBlondies">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold"> Matcha Oreo Blondies</h5>
+                                        <p class="card-text text-muted">Brownies matcha lembut dengan potongan Oreo cokelat.</p>
+                                        <div class="price-tag">Rp 130.000</div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <span class="text-success">
+                                                <i class="fas fa-check-circle"></i> Tersedia
+                                            </span>
+                                            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=birthday2'">
+                                                <i class="fas fa-shopping-cart me-1"></i>Pesan
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+               <!-- Cheesecake Section -->
+                <div id="cheesecake" class="mb-5 pt-4">
+                <h2 class="fw-bold mb-4">
+                <i class="fas fa-cheese me-2 text-danger"></i>Cheesecake</h2>
+                <div class="row">
+         <!-- Cheesecake 1 -->
+    <div class="col-lg-4 col-md-6 col-12 mb-4" data-category="cheesecake" data-price="low">
+      <div class="cake-card">
+        <div class="position-relative">
+          <img src="img/TiramisuCheesecake.jpeg" class="card-img-top" alt="Tiramisu Cheesecake" />
+          <span class="cake-badge">
+            <span class="badge bg-danger">Terlaris</span>
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Tiramisu Cheesecake</h5>
+          <p class="card-text">
+            Cheesecake lembut dan creamy dengan cita rasa kopi khas tiramisu dan lapisan keju yang rich.
+          </p>
+          <div class="price-tag">Rp 75.000</div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="text-success"><i class="fas fa-check-circle"></i> Tersedia</span>
+            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=tiramisucheese'">
+              <i class="fas fa-shopping-cart me-1"></i>Pesan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cheesecake 2 -->
+    <div class="col-lg-4 col-md-6 col-12 mb-4" data-category="cheesecake" data-price="low">
+      <div class="cake-card">
+        <div class="position-relative">
+          <img src="img/OreoCheesecake.jpeg" class="card-img-top" alt="Oreo Cheesecake" />
+          <span class="cake-badge">
+            <span class="badge bg-secondary"></span>
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Oreo Cheesecake</h5>
+          <p class="card-text">Cheesecake creamy dengan remahan biskuit Oreo yang renyah dan rasa manis seimbang.</p>
+          <div class="price-tag">Rp 65.000</div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="text-success"><i class="fas fa-check-circle"></i> Tersedia</span>
+            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=oreocheese'">
+              <i class="fas fa-shopping-cart me-1"></i>Pesan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cheesecake 3 -->
+    <div class="col-lg-4 col-md-6 col-12 mb-4" data-category="cheesecake" data-price="low">
+      <div class="cake-card">
+        <div class="position-relative">
+          <img src="img/BlueberryCheesecake.jpeg" class="card-img-top" alt="Blueberry Cheesecake" />
+          <span class="cake-badge">
+            <span class="badge bg-info text-dark"></span>
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Blueberry Cheesecake</h5>
+          <p class="card-text">Cheesecake lembut dengan topping blueberry yang segar, manis-asamnya seimbang.</p>
+          <div class="price-tag">Rp 60.000</div>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <span class="text-success"><i class="fas fa-check-circle"></i> Tersedia</span>
+            <button class="btn btn-danger btn-sm" onclick="window.location.href='order.html?cake=blueberrycheese'">
+              <i class="fas fa-shopping-cart me-1"></i>Pesan
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold"><i class="fas fa-birthday-cake me-2"></i>CakeHub</h5>
+                    <p class="mb-3">Pemesanan kue online sejak 2025.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Kontak</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fab fa-whatsapp me-2"></i> 0812-3456-7890
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope me-2"></i> order@cakehub.id
+                        </li>
+                        <li class="mb-2">
+                            <a href="#" class="text-white"><i class="fab fa-instagram me-2"></i>@cakehub</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt me-2"></i> Jl. Manis No. 123, Yogyakarta
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold">Jam Operasional</h5>
+                    <p>Senin - Sabtu: 08.00 - 17.00</p>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <p class="text-center mb-0">&copy; 2025 CakeHub</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/catalog.js"></script>
+</body>
+</html>
